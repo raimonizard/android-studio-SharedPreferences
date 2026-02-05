@@ -48,7 +48,7 @@ fun SettingsScreen() {
         OutlinedTextField(
             value = viewModel.nomUsuari,
             onValueChange = { viewModel.actualitzarNom(it) },
-            label = { Text("Escriu el teu nom") },
+            label = { Text("Escriu el teu nom:") },
             modifier = Modifier.fillMaxWidth()
         )
 
