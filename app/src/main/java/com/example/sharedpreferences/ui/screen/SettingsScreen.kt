@@ -1,4 +1,4 @@
-package com.example.sharedpreferences.ui.screens
+package com.example.sharedpreferences.ui.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,16 +17,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.sharedpreferences.data.SettingsRepository
-import com.example.sharedpreferences.ui.viewmodels.SettingsViewModel
-import com.example.sharedpreferences.ui.viewmodels.SettingsViewModelFactory
+import com.example.sharedpreferences.model.SettingsRepository
+import com.example.sharedpreferences.ui.viewmodel.SettingsViewModel
+import com.example.sharedpreferences.ui.viewmodel.SettingsViewModelFactory
 
 @Composable
 fun SettingsScreen() {
     val context = LocalContext.current
 
     // 1. Instanciem el Repository
-    val repository = remember { SettingsRepository(context) }
+    val repository = remember { SettingsRepository("ArxiuPreferencies", context) }
 
     // 2. Instanciem el ViewModel fent servir la Factory
     val viewModel: SettingsViewModel = viewModel(
@@ -47,7 +47,7 @@ fun SettingsScreen() {
 
         OutlinedTextField(
             value = viewModel.nomUsuari,
-            onValueChange = { viewModel.actualitzarNom(it) },
+            onValueChange = { viewModel.actualitzarNomUsuari(it) },
             label = { Text("Escriu el teu nom:") },
             modifier = Modifier.fillMaxWidth()
         )
